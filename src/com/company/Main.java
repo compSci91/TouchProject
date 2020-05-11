@@ -12,17 +12,20 @@ public class Main {
         Scanner sc = new Scanner(file);
 
         while (sc.hasNextLine()) {
-            String touch = sc.nextLine();
-            String[] touchArray = touch.split(",");
+            String rawTouchString = sc.nextLine();
+            String[] touchArray = rawTouchString.split(",");
 
-            System.out.print("[");
+            Touch touch = new Touch(touchArray);
+            System.out.println(touch);
 
-            for(String touchData : touchArray){
-                System.out.print(touchData + ",");
-            }
-            System.out.print("]");
-
-            System.out.println();
+//            System.out.print("[");
+//
+//            for(String touchData : touchArray){
+//                System.out.print(touchData + ",");
+//            }
+//            System.out.print("]");
+//
+//            System.out.println();
         }
 
 
