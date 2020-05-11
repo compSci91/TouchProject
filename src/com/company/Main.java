@@ -7,16 +7,25 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        // pass the path to the file as a parameter
         File file =
                 new File("/Volumes/GoogleDrive/My Drive/study/A1/Data/aConsensus.txt");
         Scanner sc = new Scanner(file);
 
-        while (sc.hasNextLine())
-            System.out.println(sc.nextLine());
+        while (sc.hasNextLine()) {
+            String touch = sc.nextLine();
+            String[] touchArray = touch.split(",");
 
-       // System.out.println("Hello, world!");
+            System.out.print("[");
 
-        //"/Volumes/GoogleDrive/My Drive/study/A1/Data/aConsensus.txt"
+            for(String touchData : touchArray){
+                System.out.print(touchData + ",");
+            }
+            System.out.print("]");
+
+            System.out.println();
+        }
+
+
+
     }
 }
