@@ -37,5 +37,12 @@ public class Conversation {
 
 
         System.out.println(intentionMap);
+
+        for(String intention : intentionMap.keySet()){
+
+
+            double percentage = intentionMap.get(intention) / (double)intentions.size() * 100;
+            System.out.println("Intention: " + intention + ": " + percentage + "%");
+        }
     }
 }
