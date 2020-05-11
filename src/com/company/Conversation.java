@@ -9,12 +9,25 @@ public class Conversation {
         this.touches = touches;
     }
 
-    public void calculateProportions(String dicussion){
+    public void calculateIntentionProportions(String dicussion){
         List<String> discussionSixIntentions = new ArrayList<String>();
 
         for(Touch touch : touches){
             if(touch.discussion != null && touch.discussion.equals(dicussion)){
                 discussionSixIntentions.addAll(touch.intentions);
+            }
+        }
+
+        calculatePercentages(discussionSixIntentions);
+
+    }
+
+    public void calculateReferenceTypeProportions(String dicussion){
+        List<String> discussionSixIntentions = new ArrayList<String>();
+
+        for(Touch touch : touches){
+            if(touch.discussion != null && touch.discussion.equals(dicussion)){
+                discussionSixIntentions.add(touch.referenceType);
             }
         }
 

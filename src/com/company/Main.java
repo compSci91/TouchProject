@@ -37,7 +37,8 @@ public class Main {
 
         Conversation conversation = new Conversation(touches);
 
-        conversation.calculateProportions("Discussion 3");
+//        conversation.calculateIntentionProportions("Discussion 3");
+        conversation.calculateReferenceTypeProportions("Discussion 3");
 
 
 
