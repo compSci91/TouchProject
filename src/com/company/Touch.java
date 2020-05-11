@@ -8,6 +8,11 @@ public class Touch {
     private List<String> intentions;
 
     public Touch(String[] touchArray){
+
+        if(touchArray.length > 4 && touchArray[4].contains("End")){
+            return;
+        }
+
         this.timestamp = touchArray[0];
         this.touchStrength = touchArray[1];
         this.duration = touchArray[2];
