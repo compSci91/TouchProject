@@ -1,12 +1,15 @@
 package com.company;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 
+        List<Touch> touches = new ArrayList<Touch>();
         File file =
                 new File("/Volumes/GoogleDrive/My Drive/study/A1/Data/aConsensus.txt");
         Scanner sc = new Scanner(file);
@@ -16,7 +19,11 @@ public class Main {
             String[] touchArray = rawTouchString.split(",");
 
             Touch touch = new Touch(touchArray);
-            System.out.println(touch);
+            //System.out.println(touch);
+            touches.add(touch);
+
+
+
 
 //            System.out.print("[");
 //
@@ -27,6 +34,10 @@ public class Main {
 //
 //            System.out.println();
         }
+
+        Conversation conversation = new Conversation(touches);
+
+        conversation.calculateProportions("Discussion 3");
 
 
 

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Touch {
-    private String timestamp, touchStrength, duration, discussion, referenceType, speakingOrListening;
-    private List<String> intentions;
+    public String timestamp, touchStrength, duration, discussion, referenceType, speakingOrListening;
+    public List<String> intentions;
 
     public Touch(String[] touchArray){
 
