@@ -32,7 +32,18 @@ public class Conversation {
         }
 
         calculatePercentages(discussionSixIntentions);
+    }
 
+    public void calculateReferenceTypeProportionsWithIntentions(String intention){
+        List<String> discussionSixIntentions = new ArrayList<String>();
+
+        for(Touch touch : touches){
+            if(touch.intentions != null && touch.intentions.contains(intention) && touch.speakingOrListening.equals("speaking")){
+                discussionSixIntentions.add(touch.referenceType);
+            }
+        }
+
+        calculatePercentages(discussionSixIntentions);
     }
 
     public void calculatePercentages(List<String> intentions){

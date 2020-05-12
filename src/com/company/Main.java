@@ -11,7 +11,7 @@ public class Main {
 
         List<Touch> touches = new ArrayList<Touch>();
         File file =
-                new File("/Volumes/GoogleDrive/My Drive/study/A1/Data/aConsensus.txt");
+                new File("/Volumes/GoogleDrive/My Drive/study/A3/Data/Consensus.txt");
         Scanner sc = new Scanner(file);
 
         while (sc.hasNextLine()) {
@@ -22,23 +22,27 @@ public class Main {
             //System.out.println(touch);
             touches.add(touch);
 
-
-
-
-//            System.out.print("[");
-//
-//            for(String touchData : touchArray){
-//                System.out.print(touchData + ",");
-//            }
-//            System.out.print("]");
-//
-//            System.out.println();
         }
+
+        file = new File("/Volumes/GoogleDrive/My Drive/study/A15/Data/Consensus.txt");
+        sc = new Scanner(file);
+
+        while (sc.hasNextLine()) {
+            String rawTouchString = sc.nextLine();
+            String[] touchArray = rawTouchString.split(",");
+
+            Touch touch = new Touch(touchArray);
+            //System.out.println(touch);
+            touches.add(touch);
+
+        }
+
 
         Conversation conversation = new Conversation(touches);
 
-//        conversation.calculateIntentionProportions("Discussion 3");
-        conversation.calculateReferenceTypeProportions("Discussion 3");
+        conversation.calculateReferenceTypeProportionsWithIntentions("playful");
+       // conversation.calculateIntentionProportions("Discussion 1");
+        //conversation.calculateReferenceTypeProportions("Discussion 3");
 
 
 
