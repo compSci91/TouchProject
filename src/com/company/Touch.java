@@ -1,13 +1,15 @@
 package com.company;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Touch {
     public String timestamp, touchStrength, duration, discussion, referenceType, speakingOrListening;
     public List<String> intentions;
 
-    public Touch(String[] touchArray){
+    public Touch(String[] touchArray, File file){
 
         if(touchArray.length > 4 && touchArray[4].contains("End")){
             return;
@@ -24,7 +26,7 @@ public class Touch {
             int i = 4;
 
             while (i < touchArray.length) {
-                if (!touchArray[i].contains("Discussion")) {
+                if (!touchArray[i].contains("Discussion") && !touchArray[i].contains("Other")) {
                     intentions.add(touchArray[i]);
                     i++;
                 } else {
@@ -33,9 +35,19 @@ public class Touch {
 
             }
 
-            this.discussion = touchArray[i];
-            this.referenceType = touchArray[i + 1];
-            this.speakingOrListening = touchArray[i + 2];
+            try {
+                this.discussion = touchArray[i];
+                this.referenceType = touchArray[i + 1];
+                this.speakingOrListening = touchArray[i + 2];
+            } catch(ArrayIndexOutOfBoundsException ex){
+                System.out.println("Found ArrayIndexOutOfBoundsException with the following string!");
+                List brokenTouch = Arrays.asList(touchArray);
+                System.out.println(brokenTouch);
+
+                System.out.println("File: " + file.getAbsolutePath());
+
+
+            }
         }
     }
 
