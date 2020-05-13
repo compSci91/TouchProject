@@ -24,16 +24,44 @@ public class Conversation {
         this.disagreementCategory = new HashSet<Intention>(Arrays.asList(disagreementIntentions));
     }
 
-    public void calculateIntentionProportions(String dicussion){
-        List<String> discussionSixIntentions = new ArrayList<String>();
+    public void printNumberOfDisagreements(String discussion){
+        int number_of_disagreement = 0;
 
         for(Touch touch : touches){
-            if(touch.discussion != null && touch.discussion.equals(dicussion)){
-                discussionSixIntentions.addAll(touch.intentions);
+            if(touch.discussion != null && touch.discussion.equals(discussion)){
+                if(disagreementCategory.contains(touch.intention)){
+                    number_of_disagreement++;
+                }
             }
         }
 
-        calculatePercentages(discussionSixIntentions);
+        System.out.println(number_of_disagreement);
+    }
+
+    public void printNumberOfAgreements(String discussion){
+        int number_of_disagreement = 0;
+
+        for(Touch touch : touches){
+            if(touch.discussion != null && touch.discussion.equals(discussion)){
+                if(agreementCategory.contains(touch.intention)){
+                    number_of_disagreement++;
+                }
+            }
+        }
+
+        System.out.println(number_of_disagreement);
+    }
+
+    public void calculateIntentionProportions(String discussion){
+        List<String> intentions = new ArrayList<String>();
+
+        for(Touch touch : touches){
+            if(touch.discussion != null && touch.discussion.equals(discussion)){
+                intentions.addAll(touch.intentions);
+            }
+        }
+
+        calculatePercentages(intentions);
 
     }
 
@@ -78,15 +106,15 @@ public class Conversation {
     }
 
     public void calculateReferenceTypeProportionsWithIntentions(String intention){
-        List<String> discussionSixIntentions = new ArrayList<String>();
+        List<String> intentions = new ArrayList<String>();
 
         for(Touch touch : touches){
             if(touch.intentions != null && touch.intentions.contains(intention) && touch.speakingOrListening.equals("speaking")){
-                discussionSixIntentions.add(touch.referenceType);
+                intentions.add(touch.referenceType);
             }
         }
 
-        calculatePercentages(discussionSixIntentions);
+        calculatePercentages(intentions);
     }
 
     public void calculatePercentages(List<String> intentions){

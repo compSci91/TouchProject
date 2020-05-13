@@ -4,10 +4,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 public class Touch {
     public String timestamp, touchStrength, duration, discussion, referenceType, speakingOrListening;
     public List<String> intentions;
+    public Intention intention;
 
     public Touch(String[] touchArray, File file){
 
@@ -34,6 +36,8 @@ public class Touch {
                 }
 
             }
+
+            this.intention = new Intention(this.intentions);
 
             try {
                 this.discussion = touchArray[i];

@@ -82,28 +82,30 @@ public class Main {
 
 
 
-//            File file =  new File("/Volumes/GoogleDrive/My Drive/study/A8/Data/Consensus.txt");
-//            Scanner sc = new Scanner(file);
-//
-//            while (sc.hasNextLine()) {
-//                String rawTouchString = sc.nextLine();
-//
-//                if(rawTouchString.contains("End")) {
-//                    // Do nothing
-//                } else {
-//                    String[] touchArray = rawTouchString.split(",");
-//
-//                    Touch touch = new Touch(touchArray, file);
-//                 //   System.out.println(touch);
-//                    touches.add(touch);
-//                }
-//
-//            }
-//
-//
-//
-//        Conversation conversation = new Conversation(touches);
-//            conversation.printReferenceTypeList("Discussion 1");
+            File file =  new File("/Volumes/GoogleDrive/My Drive/study/A3/Data/Consensus.txt");
+            Scanner sc = new Scanner(file);
+
+            while (sc.hasNextLine()) {
+                String rawTouchString = sc.nextLine();
+
+                if(rawTouchString.contains("End")) {
+                    // Do nothing
+                } else {
+                    String[] touchArray = rawTouchString.split(",");
+
+                    Touch touch = new Touch(touchArray, file);
+                 //   System.out.println(touch);
+                    touches.add(touch);
+                }
+
+            }
+
+
+
+        Conversation conversation = new Conversation(touches);
+            conversation.printNumberOfDisagreements("Discussion 7");
+            conversation.printNumberOfAgreements("Discussion 2");
+//            conversation.printReferenceTypeList("Discussion 7");
 //
 //        conversation.calculateReferenceTypeProportionsWithIntentions("anger");
        // conversation.calculateIntentionProportions("Discussion 1");
