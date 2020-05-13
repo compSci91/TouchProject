@@ -1,9 +1,7 @@
 package com.company;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -62,31 +60,42 @@ public class Main {
 //        }
 
 
+        String[] first_intentions = {"agreement", "assurance"};
+
+        Intention first_intention = new Intention(new HashSet<>(Arrays.asList(first_intentions)));
+
+        String[] second_intentions = {"assurance", "agreement"};
+
+        Intention second_intention =  new Intention(new HashSet<>(Arrays.asList(second_intentions)));
+
+
+        System.out.println(first_intention.hashCode() == second_intention.hashCode());
 
 
 
-            File file =  new File("/Volumes/GoogleDrive/My Drive/study/A8/Data/Consensus.txt");
-            Scanner sc = new Scanner(file);
 
-            while (sc.hasNextLine()) {
-                String rawTouchString = sc.nextLine();
-
-                if(rawTouchString.contains("End")) {
-                    // Do nothing
-                } else {
-                    String[] touchArray = rawTouchString.split(",");
-
-                    Touch touch = new Touch(touchArray, file);
-                 //   System.out.println(touch);
-                    touches.add(touch);
-                }
-
-            }
-
-
-
-        Conversation conversation = new Conversation(touches);
-            conversation.printReferenceTypeList("Discussion 1");
+//            File file =  new File("/Volumes/GoogleDrive/My Drive/study/A8/Data/Consensus.txt");
+//            Scanner sc = new Scanner(file);
+//
+//            while (sc.hasNextLine()) {
+//                String rawTouchString = sc.nextLine();
+//
+//                if(rawTouchString.contains("End")) {
+//                    // Do nothing
+//                } else {
+//                    String[] touchArray = rawTouchString.split(",");
+//
+//                    Touch touch = new Touch(touchArray, file);
+//                 //   System.out.println(touch);
+//                    touches.add(touch);
+//                }
+//
+//            }
+//
+//
+//
+//        Conversation conversation = new Conversation(touches);
+//            conversation.printReferenceTypeList("Discussion 1");
 //
 //        conversation.calculateReferenceTypeProportionsWithIntentions("anger");
        // conversation.calculateIntentionProportions("Discussion 1");

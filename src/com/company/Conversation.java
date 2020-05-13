@@ -4,9 +4,15 @@ import java.util.*;
 
 public class Conversation {
     public Collection<Touch> touches;
+    private Set<String> agreementCategory;
+    private Set<String> disagreementCategory;
+
 
     public Conversation(Collection<Touch> touches){
         this.touches = touches;
+
+//        String[] agreements = ["agreement", "agreement assurance", "agreement attentive", "agreement understanding", "emphasis agreement", "loving agreement, playful agreement", "playful agreement "]
+//        agreementCategory = new HashSet<>(Arrays.asList(agreements));
     }
 
     public void calculateIntentionProportions(String dicussion){
