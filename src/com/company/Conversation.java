@@ -24,32 +24,32 @@ public class Conversation {
         this.disagreementCategory = new HashSet<Intention>(Arrays.asList(disagreementIntentions));
     }
 
-    public void printNumberOfDisagreements(String discussion){
-        int number_of_disagreement = 0;
+    public int findNumberOfDisagreements(String discussion){
+        int number_of_disagreements = 0;
 
         for(Touch touch : touches){
             if(touch.discussion != null && touch.discussion.equals(discussion)){
                 if(disagreementCategory.contains(touch.intention)){
-                    number_of_disagreement++;
+                    number_of_disagreements++;
                 }
             }
         }
 
-        System.out.println(number_of_disagreement);
+       return number_of_disagreements;
     }
 
-    public void printNumberOfAgreements(String discussion){
-        int number_of_disagreement = 0;
+    public int findNumberofAgreements(String discussion){
+        int number_of_agreements = 0;
 
         for(Touch touch : touches){
             if(touch.discussion != null && touch.discussion.equals(discussion)){
                 if(agreementCategory.contains(touch.intention)){
-                    number_of_disagreement++;
+                    number_of_agreements++;
                 }
             }
         }
 
-        System.out.println(number_of_disagreement);
+        return number_of_agreements;
     }
 
     public void calculateIntentionProportions(String discussion){
