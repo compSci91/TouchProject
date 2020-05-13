@@ -22,6 +22,34 @@ public class Conversation {
 
     }
 
+    public void printReferenceTypeList(String discussion){
+        List<String> referenceTypes = new ArrayList<String>();
+
+        for(Touch touch : touches){
+            if(touch.discussion != null && touch.discussion.equals(discussion)){
+                referenceTypes.add(touch.referenceType);
+            }
+        }
+
+        int i = 0;
+
+        while(i < referenceTypes.size()){
+            String referenceType = referenceTypes.get(i);
+            int numberOfIntentions = 1;
+
+            i++;
+
+            while(i < referenceTypes.size() && referenceTypes.get(i).equals(referenceType)){
+                numberOfIntentions++;
+                i++;
+            }
+
+            System.out.println(referenceType + ": " + numberOfIntentions);
+        }
+
+
+    }
+
     public void calculateReferenceTypeProportions(String dicussion){
         List<String> discussionSixIntentions = new ArrayList<String>();
 
