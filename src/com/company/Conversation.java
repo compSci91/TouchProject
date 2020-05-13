@@ -24,33 +24,46 @@ public class Conversation {
         this.disagreementCategory = new HashSet<Intention>(Arrays.asList(disagreementIntentions));
     }
 
-    public int findNumberOfDisagreements(String discussion){
+    public int[] findNumberOfDisagreements(String discussion){
         int number_of_disagreements = 0;
+        int number_speaking = 0;
+        int number_listening = 0;
 
         for(Touch touch : touches){
             if(touch.discussion != null && touch.discussion.equals(discussion)){
                 if(disagreementCategory.contains(touch.intention)){
                     number_of_disagreements++;
+                        if(touch.speakingOrListening.equals("speaking")){
+                            number_speaking++;
+                        } else {
+                            number_listening++;
+                        }
                 }
             }
         }
 
-       return number_of_disagreements;
+      return new int[]{number_of_disagreements, number_speaking, number_listening};
     }
 
-    public int findNumberofAgreements(String discussion){
+    public int[] findNumberofAgreements(String discussion){
         int number_of_agreements = 0;
+        int number_speaking = 0;
+        int number_listening = 0;
 
         for(Touch touch : touches){
             if(touch.discussion != null && touch.discussion.equals(discussion)){
                 if(agreementCategory.contains(touch.intention)){
                     number_of_agreements++;
+                    if(touch.speakingOrListening.equals("speaking")){
+                        number_speaking++;
+                    } else {
+                        number_listening++;
+                    }
                 }
             }
         }
 
-        return number_of_agreements;
-    }
+        return new int[]{number_of_agreements, number_speaking, number_listening};    }
 
     public void calculateIntentionProportions(String discussion){
         List<String> intentions = new ArrayList<String>();

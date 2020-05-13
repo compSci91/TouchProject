@@ -159,23 +159,29 @@ public class Main {
 
         Conversation bConversation = new Conversation(bTouches);
 
-        int a_number_of_agreements = aConversation.findNumberofAgreements(topic);
-        int b_number_of_agreements = bConversation.findNumberofAgreements( topic );
-        int total_number_of_agreements =  a_number_of_agreements + b_number_of_agreements;
+        int[] a_agreements = aConversation.findNumberofAgreements(topic);
+        int[] b_agreements = bConversation.findNumberofAgreements(topic);
 
-        System.out.println("Number of Agreements sent by A: " + a_number_of_agreements);
-        System.out.println("Number of Agreements sent by B: " + b_number_of_agreements);
-        System.out.println("Total Number of agreements: " + total_number_of_agreements);
 
+        System.out.println("Number of Agreements sent by A: " + a_agreements[0]);
+        System.out.println("\tSpeaking: " + a_agreements[1]);
+        System.out.println("\tListening: " + a_agreements[2]);
+        System.out.println("Number of Agreements sent by B: " + b_agreements[0]);
+        System.out.println("\tSpeaking: " + b_agreements[1]);
+        System.out.println("\tListening: " + b_agreements[2]);
 
         System.out.println();
-        int a_number_of_disagreements = aConversation.findNumberOfDisagreements(topic);
-        int b_number_of_disagreements = bConversation.findNumberOfDisagreements( topic );
-        int total_number_of_disagreements =  a_number_of_disagreements + b_number_of_disagreements;
+        System.out.println();
 
-        System.out.println("Number of Disagreements by A: " + a_number_of_disagreements);
-        System.out.println("Number of Disagreements by B: " + b_number_of_disagreements);
-        System.out.println("Total Number of disagreements: " + total_number_of_disagreements);
+        int[] a_disagreements = aConversation.findNumberOfDisagreements(topic);
+        int[] b_disagreements = bConversation.findNumberOfDisagreements(topic);
+
+        System.out.println("Number of disagreements sent by A: " + a_disagreements[0]);
+        System.out.println("\tSpeaking: " + a_disagreements[1]);
+        System.out.println("\tListening: " + a_disagreements[2]);
+        System.out.println("Number of disagreements sent by B: " + b_disagreements[0]);
+        System.out.println("\tSpeaking: " + b_disagreements[1]);
+        System.out.println("\tListening: " + b_disagreements[2]);
 
     }
 }
