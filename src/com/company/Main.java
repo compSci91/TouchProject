@@ -60,13 +60,21 @@ public class Main {
 //        }
 
 
-        String[] first_intentions = {"agreement", "assurance"};
+//        String[] first_intentions = {"agreement", "assurance"};
+//
+//        Intention first_intention = new Intention(new HashSet<>(Arrays.asList(first_intentions)));
+//
+//        String[] second_intentions = {"assurance", "agreement"};
+//
+//        Intention second_intention =  new Intention(new HashSet<>(Arrays.asList(second_intentions)));
 
-        Intention first_intention = new Intention(new HashSet<>(Arrays.asList(first_intentions)));
 
-        String[] second_intentions = {"assurance", "agreement"};
 
-        Intention second_intention =  new Intention(new HashSet<>(Arrays.asList(second_intentions)));
+        Intention first_intention = new Intention(new HashSet<>(Arrays.asList("agreement", "assurance")));
+
+
+        Intention second_intention =  new Intention(new HashSet<>(Arrays.asList("assurance", "agreement")));
+
 
 
         System.out.println(first_intention.hashCode() == second_intention.hashCode());

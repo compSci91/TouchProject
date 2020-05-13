@@ -3,10 +3,14 @@ package com.company;
 import java.util.*;
 
 public class Intention {
-    private Set<String> intentions;
+    private Collection<String> intentions;
 
-    public Intention(Set<String> intentions){
+    public Intention(Collection<String> intentions){
         this.intentions = intentions;
+    }
+
+    public Intention(String... intentions){
+        this.intentions = new HashSet(Arrays.asList(intentions));
     }
 
 
