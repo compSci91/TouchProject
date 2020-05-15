@@ -14,6 +14,9 @@ public class Conversation {
     private Collection<Intention> assuranceSubcategory;
     private Collection<Intention> affectionSubcategory;
 
+    private Map<IntentionSubcategory, Collection<Intention>> intentionsubcatgories;
+
+
 
 
     public Conversation(Collection<Touch> touches){
@@ -43,12 +46,12 @@ public class Conversation {
                 new Intention("assurance"), new Intention("attentive", "assurance"), new Intention("affection", "comfort"), new Intention("comforting"),
                 new Intention("comforting", "assurance"), new Intention("comforting", "beaten down"), new Intention("contemplation", "assurance"),
                 new Intention("disagreement", "understanding"), new Intention("nudge", "assurance"), new Intention("playful", "agreement", "assurance")};
-        Intention[] affectionIntentions = {new Intention("affection"), new Intention("attentive", new Intention("attentive","loving"),
+        Intention[] affectionIntentions = {new Intention("affection"), new Intention("attentive"), new Intention("attentive","loving"),
                 new Intention("comfort", "affection"), new Intention("distraction"), new Intention("flirting"),  new Intention("flirting", "loving"),
                 new Intention("goodbye", "affection"),  new Intention("loving"),  new Intention("loving", "agreement"),  new Intention("playful"),
                 new Intention("playful", "affection"),  new Intention("playful", "agreement"), new Intention("playful", "anger"),
                 new Intention("playful", "flirty"),new Intention("playful", "inquiry"),  new Intention("playful", "prove a point"),
-                new Intention("playful", "reciprocation"),  new Intention("playful", "threatening")
+                new Intention("playful", "reciprocation"),  new Intention("playful", "threatening"),
                 new Intention("playful", "agreement"),  new Intention("playful", "understanding")};
 
         this.agreementCategory = new HashSet<Intention>(Arrays.asList(agreementIntentions));
@@ -59,6 +62,21 @@ public class Conversation {
         this.reciprocationSubcategory = new HashSet<>(Arrays.asList(reciprocationIntentions));
         this.assuranceSubcategory = new HashSet<>(Arrays.asList(assuranceIntentions));
         this.affectionSubcategory = new HashSet<>(Arrays.asList(affectionIntentions));
+
+        this.intentionsubcatgories = new HashMap<>() {
+            {
+                put(IntentionSubcategory.AGREEMENT, agreementCategory);
+                put(IntentionSubcategory.DISAGREEMENT, disagreementCategory);
+                put(IntentionSubcategory.EMPHASIS, emphasisSubcategory);
+                put(IntentionSubcategory.DISCERNMENT, discernmentSubcategory);
+                put(IntentionSubcategory.ATTENTION_SEEKING, attentionSeekingSubcategory);
+                put(IntentionSubcategory.RECIPROCATION, reciprocationSubcategory);
+                put(IntentionSubcategory.ASSURANCE, assuranceSubcategory);
+                put(IntentionSubcategory.AFFECTION, affectionSubcategory);
+
+            }
+        };
+
 
 
     }
