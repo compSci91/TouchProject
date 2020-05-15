@@ -12,6 +12,7 @@ public class Conversation {
     private Collection<Intention> reciprocationSubcategory;
     private Collection<Intention> assuranceSubcategory;
     private Collection<Intention> affectionSubcategory;
+    private Collection<Intention> relationshipOtherSubcategory;
 
     private Map<IntentionSubcategory, Collection<Intention>> intentionsubcatgories;
 
@@ -56,14 +57,19 @@ public class Conversation {
                 new Intention("playful", "flirty"),new Intention("playful", "inquiry"),  new Intention("playful", "threatening"),
                 new Intention("understanding")};
 
-        this.agreementCategory = new HashSet<Intention>(Arrays.asList(agreementIntentions));
-        this.disagreementCategory = new HashSet<Intention>(Arrays.asList(disagreementIntentions));
+        Intention[] relationshipOtherIntentions = {new Intention("beaten down"), new Intention("goodbye", "affection"), new Intention("laughing"),
+                new Intention("reminiscing"), new Intention("nervous"), new Intention("nervous", "anticipation"), new Intention("upset")};
+
+        this.agreementCategory = new HashSet<>(Arrays.asList(agreementIntentions));
+        this.disagreementCategory = new HashSet<>(Arrays.asList(disagreementIntentions));
         this.emphasisSubcategory = new HashSet<>(Arrays.asList(emphasisIntentions));
         this.discernmentSubcategory = new HashSet<>(Arrays.asList(discernmentIntentions));
         this.attentionSeekingSubcategory = new HashSet<>(Arrays.asList(attentionSeekingIntentions));
         this.reciprocationSubcategory = new HashSet<>(Arrays.asList(reciprocationIntentions));
         this.assuranceSubcategory = new HashSet<>(Arrays.asList(assuranceIntentions));
         this.affectionSubcategory = new HashSet<>(Arrays.asList(affectionIntentions));
+        this.relationshipOtherSubcategory = new HashSet<>(Arrays.asList(relationshipOtherIntentions));
+
 
         this.intentionsubcatgories = new HashMap<>() {
             {
@@ -75,7 +81,7 @@ public class Conversation {
                 put(IntentionSubcategory.RECIPROCATION, reciprocationSubcategory);
                 put(IntentionSubcategory.ASSURANCE, assuranceSubcategory);
                 put(IntentionSubcategory.AFFECTION, affectionSubcategory);
-
+                put(IntentionSubcategory.RELATIONSHIP_OTHER, relationshipOtherSubcategory);
             }
         };
 

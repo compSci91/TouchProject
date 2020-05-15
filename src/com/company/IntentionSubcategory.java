@@ -9,5 +9,6 @@ public enum IntentionSubcategory {
     ATTENTION_SEEKING { @Override public String toString() { return "Attention Seeking"; } },
     RECIPROCATION{ @Override public String toString() { return "Reciprocation"; } },
     ASSURANCE { @Override public String toString() { return "Assurance"; } },
-    AFFECTION { @Override public String toString() { return "Affection"; } }
+    AFFECTION { @Override public String toString() { return "Affection"; } },
+    RELATIONSHIP_OTHER {@Override public String toString() { return "RELATIONSHIP: OTHER"; }}
 }

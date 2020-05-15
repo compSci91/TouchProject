@@ -28,7 +28,9 @@ public class Touch {
 
             while (i < touchArray.length) {
                 if (!touchArray[i].contains("Discussion") && !touchArray[i].contains("Other")) {
-                    intentions.add(touchArray[i]);
+                    if(!touchArray[i].equals("x")) {
+                        intentions.add(touchArray[i]);
+                    }
                     i++;
                 } else {
                     break;
