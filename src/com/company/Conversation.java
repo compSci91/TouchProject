@@ -1,11 +1,19 @@
 package com.company;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Conversation {
     public Collection<Touch> touches;
     private Collection<Intention> agreementCategory;
     private Collection<Intention> disagreementCategory;
+    private Collection<Intention> emphasisSubcategory;
+    private Collection<Intention> discernmentSubcategory;
+    private Collection<Intention> attentionSeekingSubcategory;
+    private Collection<Intention> reciprocationSubcategory;
+    private Collection<Intention> assuranceSubcategory;
+    private Collection<Intention> affectionSubcategory;
+
 
 
     public Conversation(Collection<Touch> touches){
@@ -15,13 +23,44 @@ public class Conversation {
                 new Intention("agreement", "understanding"), new Intention("emphasis", "agreement"), new Intention("loving", "agreement"),
                 new Intention("playful", "agreement"), new Intention("playful", "agreement", "assurance"),  new Intention("reciprocation", "agreement")};
 
-        this.agreementCategory = new HashSet<Intention>(Arrays.asList(agreementIntentions));
 
         Intention[] disagreementIntentions = {new Intention("anger"), new Intention("annoyance"), new Intention("disagreement"),
                 new Intention("disagreement, understanding"), new Intention("frustration", "disagreement"), new Intention("playful", "prove a point"),
                 new Intention("prove a point")};
 
+
+        Intention[] emphasisIntentions = {new Intention("emphasis"), new Intention("emphasis", "agreement"), new Intention("excitement")};
+        Intention[] discernmentIntentions = {new Intention("confusion"), new Intention("contemplation"), new Intention("inquiry"),
+                new Intention("interest"), new Intention("understanding")};
+        Intention[] attentionSeekingIntentions = {new Intention("attention seeking"), new Intention("attention seeking", "nudge"),
+                new Intention("attention seeking", "playful"),  new Intention("attention seeking", "be serious"),  new Intention("attention seeking", "clarification"),
+                new Intention("distraction"), new Intention("nudge"), new Intention("nudge", "assurance"), new Intention("transitioning"),
+                new Intention("tug")};
+        Intention[] reciprocationIntentions = {new Intention("acknowledgement"), new Intention("affection", "reciprocation"),  new Intention("playful", "reciprocation"),
+                new Intention( "reciprocation"),  new Intention("playful", "reciprocation")};
+
+        Intention[] assuranceIntentions = {new Intention("affection", "assurance"), new Intention("agreement", "assurance"), new Intention("appreciation"),
+                new Intention("assurance"), new Intention("attentive", "assurance"), new Intention("affection", "comfort"), new Intention("comforting"),
+                new Intention("comforting", "assurance"), new Intention("comforting", "beaten down"), new Intention("contemplation", "assurance"),
+                new Intention("disagreement", "understanding"), new Intention("nudge", "assurance"), new Intention("playful", "agreement", "assurance")};
+        Intention[] affectionIntentions = {new Intention("affection"), new Intention("attentive", new Intention("attentive","loving"),
+                new Intention("comfort", "affection"), new Intention("distraction"), new Intention("flirting"),  new Intention("flirting", "loving"),
+                new Intention("goodbye", "affection"),  new Intention("loving"),  new Intention("loving", "agreement"),  new Intention("playful"),
+                new Intention("playful", "affection"),  new Intention("playful", "agreement"), new Intention("playful", "anger"),
+                new Intention("playful", "flirty"),new Intention("playful", "inquiry"),  new Intention("playful", "prove a point"),
+                new Intention("playful", "reciprocation"),  new Intention("playful", "threatening")
+                new Intention("playful", "agreement"),  new Intention("playful", "understanding")};
+
+        this.agreementCategory = new HashSet<Intention>(Arrays.asList(agreementIntentions));
         this.disagreementCategory = new HashSet<Intention>(Arrays.asList(disagreementIntentions));
+        this.emphasisSubcategory = new HashSet<>(Arrays.asList(emphasisIntentions));
+        this.discernmentSubcategory = new HashSet<>(Arrays.asList(discernmentIntentions));
+        this.attentionSeekingSubcategory = new HashSet<>(Arrays.asList(attentionSeekingIntentions));
+        this.reciprocationSubcategory = new HashSet<>(Arrays.asList(reciprocationIntentions));
+        this.assuranceSubcategory = new HashSet<>(Arrays.asList(assuranceIntentions));
+        this.affectionSubcategory = new HashSet<>(Arrays.asList(affectionIntentions));
+
+
     }
 
     public int[] findNumberOfDisagreements(String discussion){
@@ -152,5 +191,9 @@ public class Conversation {
             double percentage = intentionMap.get(intention) / (double)intentions.size() * 100;
             System.out.println("Intention: " + intention + ": " + percentage + "%");
         }
+    }
+
+    public void printNumberOfIntentions(String topic, String intentionSubcategory) {
+
     }
 }

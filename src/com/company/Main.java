@@ -114,6 +114,38 @@ public class Main {
         printNumberOfAgreementsAndDisagreements(6, "Discussion 7");
     }
 
+    /*
+
+        1. For each person, be able to pass in a topic and a subcategory of intention. —> # of touches with that intention subcategory and #of those intentions that are speaking and listening,
+        topic, intention subCategory --> (# of touches with that intention, # speaking, # listening)
+     */
+
+    public static void printNumberOfIntentions(String maleOrFemale, int participantNumber, String topic, String intentionSubcategory) throws FileNotFoundException {
+        File file =  new File("/Volumes/GoogleDrive/My Drive/study/" + maleOrFemale + participantNumber + "/Data/Consensus.txt");
+        Scanner sc = new Scanner(file);
+
+        List<Touch> touches = new ArrayList<>();
+
+        while (sc.hasNextLine()) {
+            String rawTouchString = sc.nextLine();
+
+            if(rawTouchString.contains("End")) {
+                // Do nothing
+            } else {
+                String[] touchArray = rawTouchString.split(",");
+
+                Touch touch = new Touch(touchArray, file);
+                //   System.out.println(touch);
+                touches.add(touch);
+            }
+
+        }
+
+        Conversation conversation = new Conversation(touches);
+        conversation.printNumberOfIntentions(topic, intentionSubcategory);
+
+    }
+
     public static void printNumberOfAgreementsAndDisagreements(int coupleNumber, String topic) throws FileNotFoundException {
         File file =  new File("/Volumes/GoogleDrive/My Drive/study/A" + coupleNumber + "/Data/Consensus.txt");
         Scanner sc = new Scanner(file);
