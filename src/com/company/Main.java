@@ -112,7 +112,47 @@ public class Main {
         //conversation.calculateReferenceTypeProportions("Discussion 3");
 
         //printNumberOfAgreementsAndDisagreements(6, "Discussion 7");
-        printNumberOfIntentions("A6", "Discussion 5", IntentionSubcategory.DISAGREEMENT);
+      //  printNumberOfIntentions("A6", "Discussion 5", IntentionSubcategory.DISAGREEMENT);
+        printNumberOfReferenceTypes("A6", "Discussion 3", IntentionSubcategory.DISAGREEMENT);
+
+    }
+
+    private static void printNumberOfReferenceTypes(String participant, String topic, IntentionSubcategory intentionSubcategory) throws FileNotFoundException {
+        File file =  new File("/Volumes/GoogleDrive/My Drive/study/" + participant + "/Data/Consensus.txt");
+        Scanner sc = new Scanner(file);
+
+        List<Touch> touches = new ArrayList<>();
+
+        while (sc.hasNextLine()) {
+            String rawTouchString = sc.nextLine();
+
+            if(rawTouchString.contains("End")) {
+                // Do nothing
+            } else {
+                String[] touchArray = rawTouchString.split(",");
+
+                Touch touch = new Touch(touchArray, file);
+                //   System.out.println(touch);
+                touches.add(touch);
+            }
+
+        }
+
+        Conversation conversation = new Conversation(touches);
+        int[] referenceTypeTouches = conversation.calculateNumberOfReferenceTypes(topic, intentionSubcategory);
+
+        System.out.println("Number of metas sent by " + participant + " : "  + referenceTypeTouches[0]);
+        System.out.println("\tSpeaking: " + referenceTypeTouches[1]);
+        System.out.println("\tListening: " + referenceTypeTouches[2]);
+
+        System.out.println("Number of paras sent by " + participant + " : "  + referenceTypeTouches[3]);
+        System.out.println("\tSpeaking: " + referenceTypeTouches[4]);
+        System.out.println("\tListening: " + referenceTypeTouches[5]);
+
+        System.out.println("Number of objects sent by " + participant + " : "  + referenceTypeTouches[6]);
+        System.out.println("\tSpeaking: " + referenceTypeTouches[7]);
+        System.out.println("\tListening: " + referenceTypeTouches[8]);
+
     }
 
     /*

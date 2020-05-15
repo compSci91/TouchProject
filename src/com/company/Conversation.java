@@ -238,4 +238,49 @@ public class Conversation {
     }
 
 
+    public int[] calculateNumberOfReferenceTypes(String topic, IntentionSubcategory intentionSubcategory) {
+        int number_of_metas = 0;
+        int number_of_speaking_meta = 0;
+        int number_of_listening_meta = 0;
+        int number_of_paras = 0;
+        int number_of_speaking_paras = 0;
+        int number_of_listening_paras = 0;
+        int number_of_objects = 0;
+        int number_of_speaking_objects = 0;
+        int number_of_listening_objects = 0;
+
+        for(Touch touch : touches) {
+            if (touch.discussion != null && touch.discussion.equals(topic)) {
+                if (touch.referenceType.equals("meta")) {
+                    number_of_metas++;
+
+                    if (touch.speakingOrListening.equals("speaking")) {
+                        number_of_speaking_meta++;
+                    } else {
+                        number_of_listening_meta++;
+                    }
+                } else if (touch.referenceType.equals("para")) {
+                    number_of_paras++;
+
+                    if (touch.speakingOrListening.equals("speaking")) {
+                        number_of_speaking_paras++;
+                    } else {
+                        number_of_listening_paras++;
+                    }
+                } else if (touch.referenceType.equals("object")) {
+                    number_of_objects++;
+
+                    if (touch.speakingOrListening.equals("speaking")) {
+                        number_of_speaking_objects++;
+                    } else {
+                        number_of_listening_objects++;
+                    }
+                }
+            }
+        }
+
+        return new int[]{number_of_metas, number_of_speaking_meta, number_of_listening_meta,
+            number_of_paras, number_of_speaking_paras, number_of_listening_paras,
+            number_of_objects, number_of_speaking_objects, number_of_listening_objects, };
+    }
 }
