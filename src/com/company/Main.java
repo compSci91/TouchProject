@@ -146,7 +146,7 @@ public class Main {
         int[] intention_touches = conversation.printNumberOfIntentions(topic, intentionSubcategory);
 
 
-        System.out.println("Number of Intentions sent by " + participant + " : "  + intention_touches[0]);
+        System.out.println("Number of " + intentionSubcategory + " intentions sent by " + participant + " : "  + intention_touches[0]);
         System.out.println("\tSpeaking: " + intention_touches[1]);
         System.out.println("\tListening: " + intention_touches[2]);
 
