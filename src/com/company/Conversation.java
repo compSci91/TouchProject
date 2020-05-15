@@ -81,6 +81,29 @@ public class Conversation {
 
     }
 
+    public int[] printNumberOfIntentions(String topic, IntentionSubcategory intentionSubcategory) {
+        int number_of_intentions = 0;
+        int number_speaking = 0;
+        int number_listening = 0;
+
+        Collection<Intention> subcategory = intentionsubcatgories.get(intentionSubcategory);
+
+        for(Touch touch : touches){
+            if(touch.discussion != null && touch.discussion.equals(topic)){
+                if(subcategory.contains(touch.intention)){
+                    number_of_intentions++;
+                    if(touch.speakingOrListening.equals("speaking")){
+                        number_speaking++;
+                    } else {
+                        number_listening++;
+                    }
+                }
+            }
+        }
+
+        return new int[]{number_of_intentions, number_speaking, number_listening};
+    }
+
     public int[] findNumberOfDisagreements(String discussion){
         int number_of_disagreements = 0;
         int number_speaking = 0;
@@ -211,7 +234,5 @@ public class Conversation {
         }
     }
 
-    public void printNumberOfIntentions(String topic, String intentionSubcategory) {
 
-    }
 }

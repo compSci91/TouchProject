@@ -111,7 +111,8 @@ public class Main {
        // conversation.calculateIntentionProportions("Discussion 1");
         //conversation.calculateReferenceTypeProportions("Discussion 3");
 
-        printNumberOfAgreementsAndDisagreements(6, "Discussion 7");
+        //printNumberOfAgreementsAndDisagreements(6, "Discussion 7");
+        printNumberOfIntentions("A6", "Discussion 5", IntentionSubcategory.DISAGREEMENT);
     }
 
     /*
@@ -120,8 +121,8 @@ public class Main {
         topic, intention subCategory --> (# of touches with that intention, # speaking, # listening)
      */
 
-    public static void printNumberOfIntentions(String maleOrFemale, int participantNumber, String topic, String intentionSubcategory) throws FileNotFoundException {
-        File file =  new File("/Volumes/GoogleDrive/My Drive/study/" + maleOrFemale + participantNumber + "/Data/Consensus.txt");
+    public static void printNumberOfIntentions(String participant,  String topic, IntentionSubcategory intentionSubcategory) throws FileNotFoundException {
+        File file =  new File("/Volumes/GoogleDrive/My Drive/study/" + participant + "/Data/Consensus.txt");
         Scanner sc = new Scanner(file);
 
         List<Touch> touches = new ArrayList<>();
@@ -142,7 +143,12 @@ public class Main {
         }
 
         Conversation conversation = new Conversation(touches);
-        conversation.printNumberOfIntentions(topic, intentionSubcategory);
+        int[] intention_touches = conversation.printNumberOfIntentions(topic, intentionSubcategory);
+
+
+        System.out.println("Number of Intentions sent by " + participant + " : "  + intention_touches[0]);
+        System.out.println("\tSpeaking: " + intention_touches[1]);
+        System.out.println("\tListening: " + intention_touches[2]);
 
     }
 
