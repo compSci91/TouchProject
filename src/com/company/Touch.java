@@ -4,10 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 public class Touch {
-    public String timestamp, touchStrength, duration, discussion, referenceType, speakingOrListening;
+    public String timestamp, touchStrength, duration, topic, referenceType, speakingOrListening;
     public List<String> intentions;
     public Intention intention;
 
@@ -40,7 +39,7 @@ public class Touch {
             this.intention = new Intention(this.intentions);
 
             try {
-                this.discussion = touchArray[i];
+                this.topic = touchArray[i];
                 this.referenceType = touchArray[i + 1];
                 this.speakingOrListening = touchArray[i + 2];
             } catch(ArrayIndexOutOfBoundsException ex){
@@ -61,7 +60,7 @@ public class Touch {
                 "timestamp='" + timestamp + '\'' +
                 ", touchStrength='" + touchStrength + '\'' +
                 ", duration='" + duration + '\'' +
-                ", discussion='" + discussion + '\'' +
+                ", discussion='" + topic + '\'' +
                 ", referenceType='" + referenceType + '\'' +
                 ", speakingOrListening='" + speakingOrListening + '\'' +
                 ", intentions=" + intentions +

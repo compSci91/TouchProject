@@ -1,6 +1,5 @@
 package com.company;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Conversation {
@@ -92,7 +91,7 @@ public class Conversation {
         Collection<Intention> subcategory = intentionsubcatgories.get(intentionSubcategory);
 
         for(Touch touch : touches){
-            if(touch.discussion != null && touch.discussion.equals(topic)){
+            if(touch.topic != null && touch.topic.equals(topic)){
                 if(subcategory.contains(touch.intention)){
                     number_of_intentions++;
                     if(touch.speakingOrListening.equals("speaking")){
@@ -107,13 +106,63 @@ public class Conversation {
         return new int[]{number_of_intentions, number_speaking, number_listening};
     }
 
+    public int[] calculateNumberOfReferenceTypes(String topic, IntentionSubcategory intentionSubcategory) {
+        int number_of_metas = 0;
+        int number_of_speaking_meta = 0;
+        int number_of_listening_meta = 0;
+        int number_of_paras = 0;
+        int number_of_speaking_paras = 0;
+        int number_of_listening_paras = 0;
+        int number_of_objects = 0;
+        int number_of_speaking_objects = 0;
+        int number_of_listening_objects = 0;
+
+        for(Touch touch : touches) {
+            if (touch.topic != null && touch.topic.equals(topic)) {
+                Collection<Intention> subcategory = intentionsubcatgories.get(intentionSubcategory);
+
+                if (subcategory.contains(touch.intention)) {
+                    if (touch.referenceType.equals("meta")) {
+                        number_of_metas++;
+
+                        if (touch.speakingOrListening.equals("speaking")) {
+                            number_of_speaking_meta++;
+                        } else {
+                            number_of_listening_meta++;
+                        }
+                    } else if (touch.referenceType.equals("para")) {
+                        number_of_paras++;
+
+                        if (touch.speakingOrListening.equals("speaking")) {
+                            number_of_speaking_paras++;
+                        } else {
+                            number_of_listening_paras++;
+                        }
+                    } else if (touch.referenceType.equals("object")) {
+                        number_of_objects++;
+
+                        if (touch.speakingOrListening.equals("speaking")) {
+                            number_of_speaking_objects++;
+                        } else {
+                            number_of_listening_objects++;
+                        }
+                    }
+                }
+            }
+        }
+
+        return new int[]{number_of_metas, number_of_speaking_meta, number_of_listening_meta,
+                number_of_paras, number_of_speaking_paras, number_of_listening_paras,
+                number_of_objects, number_of_speaking_objects, number_of_listening_objects, };
+    }
+
     public int[] findNumberOfDisagreements(String discussion){
         int number_of_disagreements = 0;
         int number_speaking = 0;
         int number_listening = 0;
 
         for(Touch touch : touches){
-            if(touch.discussion != null && touch.discussion.equals(discussion)){
+            if(touch.topic != null && touch.topic.equals(discussion)){
                 if(disagreementCategory.contains(touch.intention)){
                     number_of_disagreements++;
                         if(touch.speakingOrListening.equals("speaking")){
@@ -134,7 +183,7 @@ public class Conversation {
         int number_listening = 0;
 
         for(Touch touch : touches){
-            if(touch.discussion != null && touch.discussion.equals(discussion)){
+            if(touch.topic != null && touch.topic.equals(discussion)){
                 if(agreementCategory.contains(touch.intention)){
                     number_of_agreements++;
                     if(touch.speakingOrListening.equals("speaking")){
@@ -152,7 +201,7 @@ public class Conversation {
         List<String> intentions = new ArrayList<String>();
 
         for(Touch touch : touches){
-            if(touch.discussion != null && touch.discussion.equals(discussion)){
+            if(touch.topic != null && touch.topic.equals(discussion)){
                 intentions.addAll(touch.intentions);
             }
         }
@@ -165,7 +214,7 @@ public class Conversation {
         List<String> referenceTypes = new ArrayList<String>();
 
         for(Touch touch : touches){
-            if(touch.discussion != null && touch.discussion.equals(discussion)){
+            if(touch.topic != null && touch.topic.equals(discussion)){
                 referenceTypes.add(touch.referenceType);
             }
         }
@@ -193,7 +242,7 @@ public class Conversation {
         List<String> discussionSixIntentions = new ArrayList<String>();
 
         for(Touch touch : touches){
-            if(touch.discussion != null && touch.discussion.equals(dicussion)){
+            if(touch.topic != null && touch.topic.equals(dicussion)){
                 discussionSixIntentions.add(touch.referenceType);
             }
         }
@@ -238,49 +287,5 @@ public class Conversation {
     }
 
 
-    public int[] calculateNumberOfReferenceTypes(String topic, IntentionSubcategory intentionSubcategory) {
-        int number_of_metas = 0;
-        int number_of_speaking_meta = 0;
-        int number_of_listening_meta = 0;
-        int number_of_paras = 0;
-        int number_of_speaking_paras = 0;
-        int number_of_listening_paras = 0;
-        int number_of_objects = 0;
-        int number_of_speaking_objects = 0;
-        int number_of_listening_objects = 0;
 
-        for(Touch touch : touches) {
-            if (touch.discussion != null && touch.discussion.equals(topic)) {
-                if (touch.referenceType.equals("meta")) {
-                    number_of_metas++;
-
-                    if (touch.speakingOrListening.equals("speaking")) {
-                        number_of_speaking_meta++;
-                    } else {
-                        number_of_listening_meta++;
-                    }
-                } else if (touch.referenceType.equals("para")) {
-                    number_of_paras++;
-
-                    if (touch.speakingOrListening.equals("speaking")) {
-                        number_of_speaking_paras++;
-                    } else {
-                        number_of_listening_paras++;
-                    }
-                } else if (touch.referenceType.equals("object")) {
-                    number_of_objects++;
-
-                    if (touch.speakingOrListening.equals("speaking")) {
-                        number_of_speaking_objects++;
-                    } else {
-                        number_of_listening_objects++;
-                    }
-                }
-            }
-        }
-
-        return new int[]{number_of_metas, number_of_speaking_meta, number_of_listening_meta,
-            number_of_paras, number_of_speaking_paras, number_of_listening_paras,
-            number_of_objects, number_of_speaking_objects, number_of_listening_objects, };
-    }
 }

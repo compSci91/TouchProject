@@ -112,8 +112,8 @@ public class Main {
         //conversation.calculateReferenceTypeProportions("Discussion 3");
 
         //printNumberOfAgreementsAndDisagreements(6, "Discussion 7");
-      //  printNumberOfIntentions("A6", "Discussion 5", IntentionSubcategory.DISAGREEMENT);
-        printNumberOfReferenceTypes("A6", "Discussion 3", IntentionSubcategory.DISAGREEMENT);
+      printNumberOfIntentions("A6", "Discussion 5", IntentionSubcategory.DISAGREEMENT);
+//        printNumberOfReferenceTypes("A6", "Discussion 5", IntentionSubcategory.DISAGREEMENT);
 
     }
 
@@ -141,6 +141,7 @@ public class Main {
         Conversation conversation = new Conversation(touches);
         int[] referenceTypeTouches = conversation.calculateNumberOfReferenceTypes(topic, intentionSubcategory);
 
+        System.out.println("For intention: " + intentionSubcategory);
         System.out.println("Number of metas sent by " + participant + " : "  + referenceTypeTouches[0]);
         System.out.println("\tSpeaking: " + referenceTypeTouches[1]);
         System.out.println("\tListening: " + referenceTypeTouches[2]);
