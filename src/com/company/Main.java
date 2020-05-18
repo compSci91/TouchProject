@@ -111,8 +111,8 @@ public class Main {
        // conversation.calculateIntentionProportions("Discussion 1");
         //conversation.calculateReferenceTypeProportions("Discussion 3");
 
-        //printNumberOfAgreementsAndDisagreements(6, "Discussion 7");
-      printNumberOfIntentions("A6", "Discussion 5", IntentionSubcategory.DISAGREEMENT);
+        printNumberOfAgreementsAndDisagreements(6, "Discussion 7");
+//      printNumberOfIntentions("A6", "Discussion 5", IntentionSubcategory.DISAGREEMENT);
 //        printNumberOfReferenceTypes("A6", "Discussion 5", IntentionSubcategory.DISAGREEMENT);
 
     }
