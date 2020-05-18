@@ -42,7 +42,7 @@ class ConversationTest {
     }
 
     @Test
-    public void test_calculateNumberOfReferencetypes() throws FileNotFoundException {
+    public void test_calculateNumberOfReferenceTypes() throws FileNotFoundException {
         File file =  new File("/Volumes/GoogleDrive/My Drive/study/A6/Data/Consensus.txt");
         Scanner sc = new Scanner(file);
 

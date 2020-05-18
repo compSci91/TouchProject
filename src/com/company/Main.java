@@ -1,4 +1,5 @@
 package com.company;
+import javax.naming.InterruptedNamingException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -6,114 +7,22 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
+    //    printNumberOfAgreementsAndDisagreements(6, "Discussion 7");
+    printCoupleIntentions(6, "Discussion 7",IntentionSubcategory.AGREEMENT );
+        System.out.println();
+        printCoupleIntentions(6, "Discussion 7",IntentionSubcategory.DISAGREEMENT );
 
-        List<Touch> touches = new ArrayList<Touch>();
-
-
-//        for (int i = 1; i <= 22; i++){
-//            if(i == 2 || i == 11){
-//                continue;
-//            }
-//
-//            File file =
-//                    new File("/Volumes/GoogleDrive/My Drive/study/A" + i + "/Data/Consensus.txt");
-//            Scanner sc = new Scanner(file);
-//
-//            while (sc.hasNextLine()) {
-//                String rawTouchString = sc.nextLine();
-//
-//                if(rawTouchString.contains("End")) {
-//
-//                } else {
-//                    String[] touchArray = rawTouchString.split(",");
-//
-//                    Touch touch = new Touch(touchArray, file);
-//                    //System.out.println(touch);
-//                    touches.add(touch);
-//                }
-//
-//            }
-//        }
-
-//        for(int i = 1; i <= 22; i++) {
-//            if(i == 2 || i == 11){
-//                continue;
-//            }
-//
-//            File file = new File("/Volumes/GoogleDrive/My Drive/study/B" + i + "/Data/Consensus.txt");
-//            Scanner sc = new Scanner(file);
-//
-//            while (sc.hasNextLine()) {
-//                String rawTouchString = sc.nextLine();
-//
-//                if(rawTouchString.contains("End")){
-//
-//                } else {
-//                    String[] touchArray = rawTouchString.split(",");
-//
-//                    Touch touch = new Touch(touchArray, file);
-//                    //System.out.println(touch);
-//                    touches.add(touch);
-//                }
-//
-//            }
-//        }
-
-
-//        String[] first_intentions = {"agreement", "assurance"};
-//
-//        Intention first_intention = new Intention(new HashSet<>(Arrays.asList(first_intentions)));
-//
-//        String[] second_intentions = {"assurance", "agreement"};
-//
-//        Intention second_intention =  new Intention(new HashSet<>(Arrays.asList(second_intentions)));
-
-
-//
-//        Intention first_intention = new Intention(new HashSet<>(Arrays.asList("agreement", "assurance")));
-//
-//
-//        Intention second_intention =  new Intention(new HashSet<>(Arrays.asList("assurance", "agreement")));
-//
-//
-//
-//        System.out.println(first_intention.hashCode() == second_intention.hashCode());
-//
-//
-//
-//
-//            File file =  new File("/Volumes/GoogleDrive/My Drive/study/A3/Data/Consensus.txt");
-//            Scanner sc = new Scanner(file);
-//
-//            while (sc.hasNextLine()) {
-//                String rawTouchString = sc.nextLine();
-//
-//                if(rawTouchString.contains("End")) {
-//                    // Do nothing
-//                } else {
-//                    String[] touchArray = rawTouchString.split(",");
-//
-//                    Touch touch = new Touch(touchArray, file);
-//                 //   System.out.println(touch);
-//                    touches.add(touch);
-//                }
-//
-//            }
-//
-//
-//
-//        Conversation conversation = new Conversation(touches);
-//            conversation.findNumberOfDisagreements("Discussion 7");
-//            conversation.findNumberofAgreements("Discussion 2");
-//            conversation.printReferenceTypeList("Discussion 7");
-//
-//        conversation.calculateReferenceTypeProportionsWithIntentions("anger");
-       // conversation.calculateIntentionProportions("Discussion 1");
-        //conversation.calculateReferenceTypeProportions("Discussion 3");
-
-        printNumberOfAgreementsAndDisagreements(6, "Discussion 7");
 //      printNumberOfIntentions("A6", "Discussion 5", IntentionSubcategory.DISAGREEMENT);
 //        printNumberOfReferenceTypes("A6", "Discussion 5", IntentionSubcategory.DISAGREEMENT);
+
+    }
+
+    private static void printCoupleIntentions(int coupleNumber, String topic, IntentionSubcategory intentionSubcategory) throws FileNotFoundException {
+        printNumberOfIntentions("A"+coupleNumber,  topic, intentionSubcategory);
+        printNumberOfIntentions("B"+coupleNumber, topic, intentionSubcategory);
+
+        System.out.println();
+
 
     }
 
