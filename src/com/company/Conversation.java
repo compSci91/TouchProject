@@ -15,6 +15,7 @@ public class Conversation {
     private Collection<Intention> relationshipOtherSubcategory;
 
     private Map<IntentionSubcategory, Collection<Intention>> intentionsubcatgories;
+    private Map<IntentionSubcategory, Integer> counts;
 
 
 
@@ -85,8 +86,35 @@ public class Conversation {
             }
         };
 
+        this.counts = new HashMap<>(){{
+            put(IntentionSubcategory.AGREEMENT, 0);
+            put(IntentionSubcategory.DISAGREEMENT, 0);
+            put(IntentionSubcategory.EMPHASIS, 0);
+            put(IntentionSubcategory.DISCERNMENT, 0);
+            put(IntentionSubcategory.ATTENTION_SEEKING, 0);
+            put(IntentionSubcategory.RECIPROCATION, 0);
+            put(IntentionSubcategory.ASSURANCE, 0);
+            put(IntentionSubcategory.AFFECTION, 0);
+            put(IntentionSubcategory.RELATIONSHIP_OTHER, 0);
+        }};
+    }
 
+    public Map<IntentionSubcategory, Integer> getIntentionCounts(){
+        for(Touch touch : touches){
+            Intention touchIntention = touch.intention;
 
+           for(IntentionSubcategory intentionSubcategory : intentionsubcatgories.keySet()){
+               Collection<Intention> intentions = intentionsubcatgories.get(intentionSubcategory);
+
+               if(intentions.contains(touchIntention)){
+                   Integer number = counts.get(intentionSubcategory);
+                   counts.put(intentionSubcategory, number + 1);
+               }
+           }
+
+        }
+
+        return counts;
     }
 
     public int[] printNumberOfIntentions(String topic, IntentionSubcategory intentionSubcategory) {
